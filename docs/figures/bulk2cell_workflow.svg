@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1152pt" height="720pt" viewBox="0 0 1152 720" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-09-15T16:45:25.213422</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.9.4, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 720 
+L 1152 720 
+L 1152 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="line2d_1">
+    <path d="M 230.256 130.68 
+L 999.36 130.68 
+" clip-path="url(#pb6a618581e)" style="fill: none; stroke: #303842; stroke-width: 5; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 999.36 130.68 
+L 1055.808 130.68 
+L 1055.808 405.864 
+L 893.52 405.864 
+" clip-path="url(#pb6a618581e)" style="fill: none; stroke: #303842; stroke-width: 5; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 230.256 268.272 
+L 314.928 268.272 
+L 314.928 314.136 
+L 893.52 314.136 
+" clip-path="url(#pb6a618581e)" style="fill: none; stroke: #4077ad; stroke-width: 5; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 519.552 264.744 
+L 519.552 307.08 
+" clip-path="url(#pb6a618581e)" style="fill: none; stroke: #4077ad; stroke-width: 3; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_5">
+    <path d="M 893.52 331.776 
+L 893.52 405.864 
+" clip-path="url(#pb6a618581e)" style="fill: none; stroke: #d99020; stroke-width: 5; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_6">
+    <path d="M 879.408 405.864 
+L 519.552 405.864 
+L 519.552 515.232 
+" clip-path="url(#pb6a618581e)" style="fill: none; stroke: #d99020; stroke-width: 5; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_7">
+    <path d="M 717.12 330.3648 
+L 717.12 479.952 
+L 660.672 479.952 
+L 660.672 515.232 
+" clip-path="url(#pb6a618581e)" style="fill: none; stroke: #4077ad; stroke-width: 5; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_8">
+    <path d="M 1055.808 405.864 
+L 1055.808 490.536 
+L 801.792 490.536 
+L 801.792 515.232 
+" clip-path="url(#pb6a618581e)" style="fill: none; stroke: #303842; stroke-width: 5; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_9">
+    <path d="M 801.792 515.232 
+L 202.032 515.232 
+" clip-path="url(#pb6a618581e)" style="fill: none; stroke: #19945a; stroke-width: 5; stroke-linecap: round"/>
+   </g>
+   <g id="patch_2">
+    <path d="M 57.384 518.76 
+L 71.496 518.76 
+L 71.496 504.648 
+L 57.384 504.648 
+z
+" clip-path="url(#pb6a618581e)" style="fill: #e0efe7"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 73.6128 518.76 
+L 87.7248 518.76 
+L 87.7248 504.648 
+L 73.6128 504.648 
+z
+" clip-path="url(#pb6a618581e)" style="fill: #94c8ab"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 89.8416 518.76 
+L 103.9536 518.76 
+L 103.9536 504.648 
+L 89.8416 504.648 
+z
+" clip-path="url(#pb6a618581e)" style="fill: #47996d"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 106.0704 518.76 
+L 120.1824 518.76 
+L 120.1824 504.648 
+L 106.0704 504.648 
+z
+" clip-path="url(#pb6a618581e)" style="fill: #e0efe7"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 122.2992 518.76 
+L 136.4112 518.76 
+L 136.4112 504.648 
+L 122.2992 504.648 
+z
+" clip-path="url(#pb6a618581e)" style="fill: #94c8ab"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 57.384 502.5312 
+L 71.496 502.5312 
+L 71.496 488.4192 
+L 57.384 488.4192 
+z
+" clip-path="url(#pb6a618581e)" style="fill: #94c8ab"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 73.6128 502.5312 
+L 87.7248 502.5312 
+L 87.7248 488.4192 
+L 73.6128 488.4192 
+z
+" clip-path="url(#pb6a618581e)" style="fill: #47996d"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 89.8416 502.5312 
+L 103.9536 502.5312 
+L 103.9536 488.4192 
+L 89.8416 488.4192 
+z
+" clip-path="url(#pb6a618581e)" style="fill: #e0efe7"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 106.0704 502.5312 
+L 120.1824 502.5312 
+L 120.1824 488.4192 
+L 106.0704 488.4192 
+z
+" clip-path="url(#pb6a618581e)" style="fill: #94c8ab"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 122.2992 502.5312 
+L 136.4112 502.5312 
+L 136.4112 488.4192 
+L 122.2992 488.4192 
+z
+" clip-path="url(#pb6a618581e)" style="fill: #47996d"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 57.384 486.3024 
+L 71.496 486.3024 
+L 71.496 472.1904 
+L 57.384 472.1904 
+z
+" clip-path="url(#pb6a618581e)" style="fill: #47996d"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 73.6128 486.3024 
+L 87.7248 486.3024 
+L 87.7248 472.1904 
+L 73.6128 472.1904 
+z
+" clip-path="url(#pb6a618581e)" style="fill: #e0efe7"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 89.8416 486.3024 
+L 103.9536 486.3024 
+L 103.9536 472.1904 
+L 89.8416 472.1904 
+z
+" clip-path="url(#pb6a618581e)" style="fill: #94c8ab"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 106.0704 486.3024 
+L 120.1824 486.3024 
+L 120.1824 472.1904 
+L 106.0704 472.1904 
+z
+" clip-path="url(#pb6a618581e)" style="fill: #47996d"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 122.2992 486.3024 
+L 136.4112 486.3024 
+L 136.4112 472.1904 
+L 122.2992 472.1904 
+z
+" clip-path="url(#pb6a618581e)" style="fill: #e0efe7"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 885.997666 130.68 
+Q 941.677295 130.68 997.356924 130.68 
+" clip-path="url(#pb6a618581e)" style="fill: none"/>
+    <path d="M 989.756924 126.88 
+L 997.356924 130.68 
+L 989.756924 134.48 
+z
+" clip-path="url(#pb6a618581e)" style="fill: #303842"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 915.863325 405.864 
+Q 905.691276 405.864 895.519226 405.864 
+" clip-path="url(#pb6a618581e)" style="fill: none"/>
+    <path d="M 903.119226 409.664 
+L 895.519226 405.864 
+L 903.119226 402.064 
+z
+" clip-path="url(#pb6a618581e)" style="fill: #303842"/>
+   </g>
+   <g id="patch_19">
+    <path d="M 808.730881 314.136 
+Q 850.125349 314.136 891.519817 314.136 
+" clip-path="url(#pb6a618581e)" style="fill: none"/>
+    <path d="M 883.919817 310.336 
+L 891.519817 314.136 
+L 883.919817 317.936 
+z
+" clip-path="url(#pb6a618581e)" style="fill: #4077ad"/>
+   </g>
+   <g id="patch_20">
+    <path d="M 519.552 302.729604 
+Q 519.552 303.904296 519.552 305.078988 
+" clip-path="url(#pb6a618581e)" style="fill: none"/>
+    <path d="M 523.352 297.478988 
+L 519.552 305.078988 
+L 515.752 297.478988 
+z
+" clip-path="url(#pb6a618581e)" style="fill: #4077ad"/>
+   </g>
+   <g id="patch_21">
+    <path d="M 893.52 396.750416 
+Q 893.52 400.308185 893.52 403.865954 
+" clip-path="url(#pb6a618581e)" style="fill: none"/>
+    <path d="M 897.32 396.265954 
+L 893.52 403.865954 
+L 889.72 396.265954 
+z
+" clip-path="url(#pb6a618581e)" style="fill: #d99020"/>
+   </g>
+   <g id="patch_22">
+    <path d="M 519.552 500.825383 
+Q 519.552 507.028036 519.552 513.23069 
+" clip-path="url(#pb6a618581e)" style="fill: none"/>
+    <path d="M 523.352 505.63069 
+L 519.552 513.23069 
+L 515.752 505.63069 
+z
+" clip-path="url(#pb6a618581e)" style="fill: #d99020"/>
+   </g>
+   <g id="patch_23">
+    <path d="M 660.672 511.93742 
+Q 660.672 512.585719 660.672 513.234017 
+" clip-path="url(#pb6a618581e)" style="fill: none"/>
+    <path d="M 664.472 505.634017 
+L 660.672 513.234017 
+L 656.872 505.634017 
+z
+" clip-path="url(#pb6a618581e)" style="fill: #4077ad"/>
+   </g>
+   <g id="patch_24">
+    <path d="M 801.792 513.528121 
+Q 801.792 514.38006 801.792 515.232 
+" clip-path="url(#pb6a618581e)" style="fill: none"/>
+    <path d="M 805.592 507.632 
+L 801.792 515.232 
+L 797.992 507.632 
+z
+" clip-path="url(#pb6a618581e)" style="fill: #303842"/>
+   </g>
+   <g id="patch_25">
+    <path d="M 289.994543 515.232 
+Q 247.013212 515.232 204.031881 515.232 
+" clip-path="url(#pb6a618581e)" style="fill: none"/>
+    <path d="M 211.631881 519.032 
+L 204.031881 515.232 
+L 211.631881 511.432 
+z
+" clip-path="url(#pb6a618581e)" style="fill: #19945a"/>
+   </g>
+   <g id="line2d_10">
+    <path d="M 82.08 652.824 
+L 113.832 652.824 
+" clip-path="url(#pb6a618581e)" style="fill: none; stroke: #303842; stroke-width: 5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_11">
+    <path d="M 357.264 652.824 
+L 389.016 652.824 
+" clip-path="url(#pb6a618581e)" style="fill: none; stroke: #4077ad; stroke-width: 5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_12">
+    <path d="M 646.56 652.824 
+L 678.312 652.824 
+" clip-path="url(#pb6a618581e)" style="fill: none; stroke: #d99020; stroke-width: 5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_13">
+    <path d="M 886.464 652.824 
+L 918.216 652.824 
+" clip-path="url(#pb6a618581e)" style="fill: none; stroke: #19945a; stroke-width: 5; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="fill: #303842; font: 700 29px 'DejaVu Sans'; text-anchor: start" x="46.8" y="46.954187" transform="rotate(-0 46.8 46.954187)">bulk2cell</text>
+   </g>
+   <g id="text_2">
+    <text style="fill: #303842; font: 14px 'DejaVu Sans'; text-anchor: start" x="46.8" y="75.978325" transform="rotate(-0 46.8 75.978325)">Bulk long-read-assisted isoform quantification at single-cell resolution</text>
+   </g>
+   <g id="text_3">
+    <text style="fill: #b52d50; font: 700 13px 'DejaVu Sans'; text-anchor: middle" x="131.472" y="130.739188" transform="rotate(-0 131.472 130.739188)">PacBio bulk reads</text>
+   </g>
+   <g id="text_4">
+    <text style="fill: #65717e; font: 10px 'DejaVu Sans'; text-anchor: middle" x="131.472" y="152.490575" transform="rotate(-0 131.472 152.490575)">HiFi + primers / FLNC BAMs</text>
+   </g>
+   <g id="PathCollection_1">
+    <defs>
+     <path id="m978fbe391a" d="M 0 6.708204 
+C 1.779036 6.708204 3.485448 6.001385 4.743416 4.743416 
+C 6.001385 3.485448 6.708204 1.779036 6.708204 0 
+C 6.708204 -1.779036 6.001385 -3.485448 4.743416 -4.743416 
+C 3.485448 -6.001385 1.779036 -6.708204 0 -6.708204 
+C -1.779036 -6.708204 -3.485448 -6.001385 -4.743416 -4.743416 
+C -6.001385 -3.485448 -6.708204 -1.779036 -6.708204 0 
+C -6.708204 1.779036 -6.001385 3.485448 -4.743416 4.743416 
+C -3.485448 6.001385 -1.779036 6.708204 0 6.708204 
+z
+" style="stroke: #ffffff; stroke-width: 2"/>
+    </defs>
+    <g clip-path="url(#pb6a618581e)">
+     <use xlink:href="#m978fbe391a" x="293.76" y="130.68" style="fill: #8c4799; stroke: #ffffff; stroke-width: 2"/>
+    </g>
+   </g>
+   <g id="text_5">
+    <text style="fill: #303842; font: 700 12px 'DejaVu Sans'" transform="translate(250.103437 160.707197)">lima + refine</text>
+    <text style="fill: #303842; font: 700 12px 'DejaVu Sans'" transform="translate(255.19125 176.424103)">(HiFi input)</text>
+   </g>
+   <g id="PathCollection_2">
+    <g clip-path="url(#pb6a618581e)">
+     <use xlink:href="#m978fbe391a" x="470.16" y="130.68" style="fill: #8c4799; stroke: #ffffff; stroke-width: 2"/>
+    </g>
+   </g>
+   <g id="text_6">
+    <text style="fill: #303842; font: 700 12px 'DejaVu Sans'" transform="translate(419.618437 160.660322)">Iso-Seq cluster</text>
+    <text style="fill: #303842; font: 700 12px 'DejaVu Sans'" transform="translate(399.685312 176.377228)">+ genome alignment</text>
+   </g>
+   <g id="PathCollection_3">
+    <g clip-path="url(#pb6a618581e)">
+     <use xlink:href="#m978fbe391a" x="646.56" y="130.68" style="fill: #8c4799; stroke: #ffffff; stroke-width: 2"/>
+    </g>
+   </g>
+   <g id="text_7">
+    <text style="fill: #303842; font: 700 12px 'DejaVu Sans'" transform="translate(617.93625 160.660322)">Collapse</text>
+    <text style="fill: #303842; font: 700 12px 'DejaVu Sans'" transform="translate(597.522187 176.377228)">+ Pigeon filter</text>
+   </g>
+   <g id="PathCollection_4">
+    <g clip-path="url(#pb6a618581e)">
+     <use xlink:href="#m978fbe391a" x="858.24" y="130.68" style="fill: #8c4799; stroke: #ffffff; stroke-width: 2"/>
+    </g>
+   </g>
+   <g id="text_8">
+    <text style="fill: #303842; font: 700 12px 'DejaVu Sans'" transform="translate(776.019375 160.660322)">Union transcript catalog</text>
+    <text style="fill: #303842; font: 700 12px 'DejaVu Sans'" transform="translate(790.896563 176.470978)">Input GTF + Iso-Seq</text>
+   </g>
+   <g id="text_9">
+    <text style="fill: #303842; font: 10px 'DejaVu Sans'" transform="translate(1068.764544 257.933953)">GTF</text>
+    <text style="fill: #303842; font: 10px 'DejaVu Sans'" transform="translate(1074.197356 271.031375)">+</text>
+    <text style="fill: #303842; font: 10px 'DejaVu Sans'" transform="translate(1063.286419 284.128797)">FASTA</text>
+   </g>
+   <g id="text_10">
+    <text style="fill: #b52d50; font: 700 13px 'DejaVu Sans'; text-anchor: middle" x="131.472" y="268.280406" transform="rotate(-0 131.472 268.280406)">Original reference</text>
+   </g>
+   <g id="text_11">
+    <text style="fill: #65717e; font: 10px 'DejaVu Sans'; text-anchor: middle" x="131.472" y="290.082575" transform="rotate(-0 131.472 290.082575)">Genome FASTA + annotation GTF</text>
+   </g>
+   <g id="PathCollection_5">
+    <g clip-path="url(#pb6a618581e)">
+     <use xlink:href="#m978fbe391a" x="314.928" y="268.272" style="fill: #8c4799; stroke: #ffffff; stroke-width: 2"/>
+    </g>
+   </g>
+   <g id="text_12">
+    <text style="fill: #303842; font: 700 12px 'DejaVu Sans'; text-anchor: middle" x="314.928" y="236.961975" transform="rotate(-0 314.928 236.961975)">Cell Ranger mkref</text>
+   </g>
+   <g id="PathCollection_6">
+    <g clip-path="url(#pb6a618581e)">
+     <use xlink:href="#m978fbe391a" x="519.552" y="314.136" style="fill: #8c4799; stroke: #ffffff; stroke-width: 2"/>
+    </g>
+   </g>
+   <g id="text_13">
+    <text style="fill: #303842; font: 700 12px 'DejaVu Sans'; text-anchor: middle" x="519.552" y="351.974775" transform="rotate(-0 519.552 351.974775)">Cell Ranger count</text>
+   </g>
+   <g id="PathCollection_7">
+    <g clip-path="url(#pb6a618581e)">
+     <use xlink:href="#m978fbe391a" x="717.12" y="314.136" style="fill: #8c4799; stroke: #ffffff; stroke-width: 2"/>
+    </g>
+   </g>
+   <g id="text_14">
+    <text style="fill: #303842; font: 700 12px 'DejaVu Sans'" transform="translate(675.520313 274.967522)">Tagged BAM</text>
+    <text style="fill: #303842; font: 700 12px 'DejaVu Sans'" transform="translate(656.91375 290.778178)">+ called barcodes</text>
+   </g>
+   <g id="PathCollection_8">
+    <g clip-path="url(#pb6a618581e)">
+     <use xlink:href="#m978fbe391a" x="893.52" y="314.136" style="fill: #8c4799; stroke: #ffffff; stroke-width: 2"/>
+    </g>
+   </g>
+   <g id="text_15">
+    <text style="fill: #303842; font: 700 12px 'DejaVu Sans'" transform="translate(858.359062 275.014397)">Called-cell</text>
+    <text style="fill: #303842; font: 700 12px 'DejaVu Sans'" transform="translate(837.910313 290.731303)">RNA pseudobulk</text>
+   </g>
+   <g id="text_16">
+    <text style="fill: #b52d50; font: 700 13px 'DejaVu Sans'; text-anchor: middle" x="519.552" y="236.579188" transform="rotate(-0 519.552 236.579188)">Illumina 10x reads</text>
+   </g>
+   <g id="text_17">
+    <text style="fill: #65717e; font: 10px 'DejaVu Sans'; text-anchor: middle" x="519.552" y="258.330575" transform="rotate(-0 519.552 258.330575)">Paired FASTQs + chemistry</text>
+   </g>
+   <g id="text_18">
+    <text style="fill: #65717e; font: 10px 'DejaVu Sans'" transform="translate(71.198563 317.909953)">Reference also supports</text>
+    <text style="fill: #65717e; font: 10px 'DejaVu Sans'" transform="translate(66.211844 331.007375)">Iso-Seq alignment, Pigeon</text>
+    <text style="fill: #65717e; font: 10px 'DejaVu Sans'" transform="translate(72.250125 344.104797)">and union construction.</text>
+   </g>
+   <g id="PathCollection_9">
+    <g clip-path="url(#pb6a618581e)">
+     <use xlink:href="#m978fbe391a" x="893.52" y="405.864" style="fill: #8c4799; stroke: #ffffff; stroke-width: 2"/>
+    </g>
+   </g>
+   <g id="text_19">
+    <text style="fill: #303842; font: 700 12px 'DejaVu Sans'; text-anchor: middle" x="893.52" y="443.74965" transform="rotate(-0 893.52 443.74965)">Salmon index + quant</text>
+   </g>
+   <g id="text_20">
+    <text style="fill: #d99020; font: 11px 'DejaVu Sans'; text-anchor: middle" x="600.696" y="388.436913" transform="rotate(-0 600.696 388.436913)">Transcript abundance prior</text>
+   </g>
+   <g id="text_21">
+    <text style="fill: #4077ad; font: 10px 'DejaVu Sans'" transform="translate(739.326969 451.466664)">Cell / UMI</text>
+    <text style="fill: #4077ad; font: 10px 'DejaVu Sans'" transform="translate(740.313688 464.564086)">evidence</text>
+   </g>
+   <g id="text_22">
+    <text style="fill: #303842; font: 10px 'DejaVu Sans'; text-anchor: middle" x="939.384" y="477.066575" transform="rotate(-0 939.384 477.066575)">Reference + Iso-Seq models</text>
+   </g>
+   <g id="PathCollection_10">
+    <g clip-path="url(#pb6a618581e)">
+     <use xlink:href="#m978fbe391a" x="801.792" y="515.232" style="fill: #8c4799; stroke: #ffffff; stroke-width: 2"/>
+    </g>
+   </g>
+   <g id="text_23">
+    <text style="fill: #303842; font: 700 12px 'DejaVu Sans'" transform="translate(742.9245 545.212322)">Molecule–isoform</text>
+    <text style="fill: #303842; font: 700 12px 'DejaVu Sans'" transform="translate(757.347937 560.929228)">compatibility</text>
+   </g>
+   <g id="PathCollection_11">
+    <g clip-path="url(#pb6a618581e)">
+     <use xlink:href="#m978fbe391a" x="519.552" y="515.232" style="fill: #8c4799; stroke: #ffffff; stroke-width: 2"/>
+    </g>
+   </g>
+   <g id="text_24">
+    <text style="fill: #303842; font: 700 12px 'DejaVu Sans'" transform="translate(469.752938 545.212322)">Capture model</text>
+    <text style="fill: #303842; font: 700 12px 'DejaVu Sans'" transform="translate(480.335438 560.929228)">+ group EM</text>
+   </g>
+   <g id="PathCollection_12">
+    <g clip-path="url(#pb6a618581e)">
+     <use xlink:href="#m978fbe391a" x="237.312" y="515.232" style="fill: #8c4799; stroke: #ffffff; stroke-width: 2"/>
+    </g>
+   </g>
+   <g id="text_25">
+    <text style="fill: #303842; font: 700 12px 'DejaVu Sans'" transform="translate(163.51575 545.212322)">Cell × isoform / group</text>
+    <text style="fill: #303842; font: 700 12px 'DejaVu Sans'" transform="translate(168.042 561.022978)">count matrices + QC</text>
+   </g>
+   <g id="text_26">
+    <text style="fill: #19945a; font: 700 15px 'DejaVu Sans'; text-anchor: middle" x="526.608" y="600.456469" transform="rotate(-0 526.608 600.456469)">bulk2cell quantify-full</text>
+   </g>
+   <g id="text_27">
+    <text style="fill: #303842; font: 10px 'DejaVu Sans'; text-anchor: start" x="124.416" y="655.583375" transform="rotate(-0 124.416 655.583375)">Transcript catalog</text>
+   </g>
+   <g id="text_28">
+    <text style="fill: #303842; font: 10px 'DejaVu Sans'; text-anchor: start" x="399.6" y="655.583375" transform="rotate(-0 399.6 655.583375)">Illumina processing</text>
+   </g>
+   <g id="text_29">
+    <text style="fill: #303842; font: 10px 'DejaVu Sans'; text-anchor: start" x="688.896" y="655.583375" transform="rotate(-0 688.896 655.583375)">Abundance prior</text>
+   </g>
+   <g id="text_30">
+    <text style="fill: #303842; font: 10px 'DejaVu Sans'; text-anchor: start" x="928.8" y="655.583375" transform="rotate(-0 928.8 655.583375)">Quantification</text>
+   </g>
+   <g id="text_31">
+    <text style="fill: #303842; font: 11px 'DejaVu Sans'; text-anchor: middle" x="576" y="694.667312" transform="rotate(-0 576 694.667312)">Cell Ranger uses only the original reference and Illumina reads; it has no Iso-Seq dependency.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pb6a618581e">
+   <rect x="11.52" y="7.2" width="1128.96" height="705.6"/>
+  </clipPath>
+ </defs>
+</svg>

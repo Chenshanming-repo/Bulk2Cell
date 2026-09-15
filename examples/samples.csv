@@ -1,0 +1,3 @@
+sample,pacbio_bams,pacbio_stage,primers,fastq_dir,fastq_sample,chemistry
+donor1,/data/donor1/run1.hifi.bam;/data/donor1/run2.hifi.bam,hifi,/data/primers.fa,/data/donor1/10x_fastqs,donor1_GEX,SC3Pv3
+donor2,/data/donor2/flnc.bam,flnc,,/data/donor2/10x_fastqs,donor2_GEX,SC3Pv3

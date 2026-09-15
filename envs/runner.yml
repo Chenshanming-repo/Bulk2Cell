@@ -1,0 +1,10 @@
+name: bulk2cell-nextflow
+channels:
+  - conda-forge
+  - bioconda
+  - nodefaults
+dependencies:
+  - nextflow=25.04.8
+  - openjdk=17
+  - python=3.11
+  - pip

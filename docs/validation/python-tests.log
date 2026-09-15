@@ -1,0 +1,91 @@
+............................................................Fatal Python error: Aborted
+
+Current thread 0x00007fc728379740 (most recent call first):
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/threadpoolctl.py", line 976 in _load_libraries
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/threadpoolctl.py", line 818 in __init__
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/threadpoolctl.py", line 794 in __init__
+  File "/homeb/user/repos/bulk2cell/software/bulk2cell/src/bulk2cell/full_pipeline.py", line 40 in _initialize_worker
+  File "/homeb/user/repos/bulk2cell/software/bulk2cell/benchmark/run_full_completion_order.py", line 42 in _worker_initialize
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/concurrent/futures/process.py", line 240 in _process_worker
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/multiprocessing/process.py", line 108 in run
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/multiprocessing/process.py", line 314 in _bootstrap
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/multiprocessing/popen_fork.py", line 71 in _launch
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/multiprocessing/popen_fork.py", line 19 in __init__
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/multiprocessing/context.py", line 281 in _Popen
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/multiprocessing/process.py", line 121 in start
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/concurrent/futures/process.py", line 785 in _spawn_process
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/concurrent/futures/process.py", line 775 in _launch_processes
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/concurrent/futures/process.py", line 748 in _start_executor_manager_thread
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/concurrent/futures/process.py", line 809 in submit
+  File "/homeb/user/repos/bulk2cell/software/bulk2cell/benchmark/run_full_completion_order.py", line 78 in completion_results
+  File "/homeb/user/repos/bulk2cell/software/bulk2cell/benchmark/run_full_completion_order.py", line 102 in dispatch
+  File "/homeb/user/repos/bulk2cell/software/bulk2cell/src/bulk2cell/full_pipeline.py", line 434 in _run_full_quantification
+  File "/homeb/user/repos/bulk2cell/software/bulk2cell/src/bulk2cell/full_pipeline.py", line 486 in run_full_quantification
+  File "/homeb/user/repos/bulk2cell/software/bulk2cell/src/bulk2cell/cli.py", line 80 in main
+  File "/homeb/user/repos/bulk2cell/software/bulk2cell/benchmark/run_full_completion_order.py", line 218 in main
+  File "/homeb/user/repos/bulk2cell/software/bulk2cell/tests/test_full_scheduler_launcher.py", line 161 in test_cli_attaches_enforced_scheduler_provenance
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/_pytest/python.py", line 157 in pytest_pyfunc_call
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/pluggy/_callers.py", line 121 in _multicall
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/pluggy/_manager.py", line 120 in _hookexec
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/pluggy/_hooks.py", line 512 in __call__
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/_pytest/python.py", line 1671 in runtest
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/_pytest/runner.py", line 178 in pytest_runtest_call
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/pluggy/_callers.py", line 121 in _multicall
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/pluggy/_manager.py", line 120 in _hookexec
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/pluggy/_hooks.py", line 512 in __call__
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/_pytest/runner.py", line 246 in <lambda>
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/_pytest/runner.py", line 344 in from_call
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/_pytest/runner.py", line 245 in call_and_report
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/_pytest/runner.py", line 136 in runtestprotocol
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/_pytest/runner.py", line 117 in pytest_runtest_protocol
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/pluggy/_callers.py", line 121 in _multicall
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/pluggy/_manager.py", line 120 in _hookexec
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/pluggy/_hooks.py", line 512 in __call__
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/_pytest/main.py", line 367 in pytest_runtestloop
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/pluggy/_callers.py", line 121 in _multicall
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/pluggy/_manager.py", line 120 in _hookexec
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/pluggy/_hooks.py", line 512 in __call__
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/_pytest/main.py", line 343 in _main
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/_pytest/main.py", line 289 in wrap_session
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/_pytest/main.py", line 336 in pytest_cmdline_main
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/pluggy/_callers.py", line 121 in _multicall
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/pluggy/_manager.py", line 120 in _hookexec
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/pluggy/_hooks.py", line 512 in __call__
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/_pytest/config/__init__.py", line 175 in main
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/_pytest/config/__init__.py", line 201 in console_main
+  File "/homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/pytest/__main__.py", line 9 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 198 in _run_module_as_main
+
+Extension modules: pysam.libcutils, pysam.libchtslib, pysam.libcsamtools, pysam.libcbcftools, pysam.libcfaidx, pysam.libctabixproxies, pysam.libctabix, pysam.libcalignmentfile, pysam.libcalignedsegment, pysam.libcsamfile, pysam.libcvcf, pysam.libcbcf, pysam.libcbgzf, numpy.core._multiarray_umath, numpy.core._multiarray_tests, numpy.linalg._umath_linalg, numpy.fft._pocketfft_internal, numpy.random._common, numpy.random.bit_generator, numpy.random._bounded_integers, numpy.random._mt19937, numpy.random.mtrand, numpy.random._philox, numpy.random._pcg64, numpy.random._sfc64, numpy.random._generator, scipy._lib._ccallback_c, scipy.sparse._sparsetools, _csparsetools, scipy.sparse._csparsetools, scipy.linalg._fblas, scipy.linalg._flapack, scipy.linalg.cython_lapack, scipy.linalg._cythonized_array_utils, scipy.linalg._solve_toeplitz, scipy.linalg._decomp_lu_cython, scipy.linalg._matfuncs_sqrtm_triu, scipy.linalg.cython_blas, scipy.linalg._matfuncs_expm, scipy.linalg._decomp_update, scipy.sparse.linalg._dsolve._superlu, scipy.sparse.linalg._eigen.arpack._arpack, scipy.sparse.linalg._propack._spropack, scipy.sparse.linalg._propack._dpropack, scipy.sparse.linalg._propack._cpropack, scipy.sparse.linalg._propack._zpropack, scipy.sparse.csgraph._tools, scipy.sparse.csgraph._shortest_path, scipy.sparse.csgraph._traversal, scipy.sparse.csgraph._min_spanning_tree, scipy.sparse.csgraph._flow, scipy.sparse.csgraph._matching, scipy.sparse.csgraph._reordering, scipy.io.matlab._mio_utils, scipy.io.matlab._streams, scipy.io.matlab._mio5_utils, scipy.spatial._ckdtree, scipy._lib.messagestream, scipy.spatial._qhull, scipy.spatial._voronoi, scipy.spatial._distance_wrap, scipy.spatial._hausdorff, scipy.special._ufuncs_cxx, scipy.special._cdflib, scipy.special._ufuncs, scipy.special._specfun, scipy.special._comb, scipy.special._ellip_harm_2, scipy.spatial.transform._rotation, scipy.cluster._vq, scipy.cluster._hierarchy, scipy.cluster._optimal_leaf_ordering, scipy.ndimage._nd_image, _ni_label, scipy.ndimage._ni_label, scipy.optimize._minpack2, scipy.optimize._group_columns, scipy.optimize._trlib._trlib, scipy.optimize._lbfgsb, _moduleTNC, scipy.optimize._moduleTNC, scipy.optimize._cobyla, scipy.optimize._slsqp, scipy.optimize._minpack, scipy.optimize._lsq.givens_elimination, scipy.optimize._zeros, scipy.optimize._highs.cython.src._highs_wrapper, scipy.optimize._highs._highs_wrapper, scipy.optimize._highs.cython.src._highs_constants, scipy.optimize._highs._highs_constants, scipy.linalg._interpolative, scipy.optimize._bglu_dense, scipy.optimize._lsap, scipy.optimize._direct, scipy.integrate._odepack, scipy.integrate._quadpack, scipy.integrate._vode, scipy.integrate._dop, scipy.integrate._lsoda, scipy.special.cython_special, scipy.stats._stats, scipy.stats.beta_ufunc, scipy.stats._boost.beta_ufunc, scipy.stats.binom_ufunc, scipy.stats._boost.binom_ufunc, scipy.stats.nbinom_ufunc, scipy.stats._boost.nbinom_ufunc, scipy.stats.hypergeom_ufunc, scipy.stats._boost.hypergeom_ufunc, scipy.stats.ncf_ufunc, scipy.stats._boost.ncf_ufunc, scipy.stats.ncx2_ufunc, scipy.stats._boost.ncx2_ufunc, scipy.stats.nct_ufunc, scipy.stats._boost.nct_ufunc, scipy.stats.skewnorm_ufunc, scipy.stats._boost.skewnorm_ufunc, scipy.stats.invgauss_ufunc, scipy.stats._boost.invgauss_ufunc, scipy.interpolate._fitpack, scipy.interpolate.dfitpack, scipy.interpolate._bspl, scipy.interpolate._ppoly, scipy.interpolate.interpnd, scipy.interpolate._rbfinterp_pythran, scipy.interpolate._rgi_cython, scipy.stats._biasedurn, scipy.stats._levy_stable.levyst, scipy.stats._stats_pythran, scipy._lib._uarray._uarray, scipy.stats._ansari_swilk_statistics, scipy.stats._sobol, scipy.stats._qmc_cy, scipy.stats._mvn, scipy.stats._rcont.rcont, scipy.stats._unuran.unuran_wrapper, PIL._imaging, kiwisolver._cext, PIL._imagingmath (total: 139)
+............ [ 57%]
+.........................s...........................                    [100%]
+=============================== warnings summary ===============================
+tests/test_benchmark_evaluation.py::test_load_run_requires_a_true_completion_manifest
+  /homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/matplotlib/_fontconfig_pattern.py:64: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    prop = Group((name + Suppress("=") + comma_separated(value)) | oneOf(_CONSTANTS))
+
+tests/test_benchmark_evaluation.py::test_load_run_requires_a_true_completion_manifest
+tests/test_benchmark_evaluation.py::test_load_run_requires_a_true_completion_manifest
+tests/test_benchmark_evaluation.py::test_load_run_requires_a_true_completion_manifest
+tests/test_benchmark_evaluation.py::test_load_run_requires_a_true_completion_manifest
+tests/test_benchmark_evaluation.py::test_load_run_requires_a_true_completion_manifest
+tests/test_benchmark_evaluation.py::test_load_run_requires_a_true_completion_manifest
+  /homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/matplotlib/_fontconfig_pattern.py:85: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'
+    parse = parser.parseString(pattern)
+
+tests/test_benchmark_evaluation.py::test_load_run_requires_a_true_completion_manifest
+tests/test_benchmark_evaluation.py::test_load_run_requires_a_true_completion_manifest
+tests/test_benchmark_evaluation.py::test_load_run_requires_a_true_completion_manifest
+tests/test_benchmark_evaluation.py::test_load_run_requires_a_true_completion_manifest
+tests/test_benchmark_evaluation.py::test_load_run_requires_a_true_completion_manifest
+tests/test_benchmark_evaluation.py::test_load_run_requires_a_true_completion_manifest
+  /homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/matplotlib/_fontconfig_pattern.py:89: PyparsingDeprecationWarning: 'resetCache' deprecated - use 'reset_cache'
+    parser.resetCache()
+
+tests/test_benchmark_evaluation.py::test_load_run_requires_a_true_completion_manifest
+  /homeb/user/repos/bulk2cell/.conda/python/lib/python3.11/site-packages/matplotlib/_mathtext.py:45: PyparsingDeprecationWarning: 'enablePackrat' deprecated - use 'enable_packrat'
+    ParserElement.enablePackrat()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+124 passed, 1 skipped, 14 warnings in 14.12s

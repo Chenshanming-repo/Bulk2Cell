@@ -1,0 +1,10 @@
+input: /path/to/samples.csv
+genome: /path/to/genome.fa
+annotation: /path/to/genes.gtf
+outdir: /path/to/results
+cellranger: /path/to/cellranger-9.0.1/cellranger
+salmon_libtype: A
+frag_mean: 200
+frag_sd: 80
+tau: 10
+max_likelihood_entries: 10000000

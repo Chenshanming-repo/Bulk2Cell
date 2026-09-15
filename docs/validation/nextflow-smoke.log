@@ -1,0 +1,30 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+[33mNextflow 26.04.6 is available - Please consider updating your version to it[m
+N E X T F L O W  ~  version 25.04.8
+Launching `/homeb/user/repos/bulk2cell/main.nf` [happy_elion] DSL2 - revision: a3eb24c02a
+[02/67a46d] Submitted process > PREPARE_REFERENCE
+[97/3b3c41] Submitted process > VALIDATE_SAMPLES
+[71/360ff9] Submitted process > ISOSEQ_REFINE (B)
+[44/a7445f] Submitted process > ISOSEQ_REFINE (A)
+[0b/63f75d] Submitted process > ISOSEQ_CLUSTER (A)
+[3d/d46577] Submitted process > ISOSEQ_CLUSTER (B)
+[11/4b0b74] Submitted process > ISOSEQ_ALIGN (A)
+[93/35b7aa] Submitted process > ISOSEQ_ALIGN (B)
+[6b/a319d0] Submitted process > ISOSEQ_COLLAPSE (A)
+[00/709c7b] Submitted process > ISOSEQ_COLLAPSE (B)
+[18/f566b4] Submitted process > PIGEON_FILTER (B)
+[7b/67de0d] Submitted process > PIGEON_FILTER (A)
+[68/546a39] Submitted process > BUILD_UNION (B)
+[26/17f64b] Submitted process > BUILD_UNION (A)
+[8b/9117d6] Submitted process > SALMON_INDEX (A)
+[1e/88d242] Submitted process > SALMON_INDEX (B)
+[93/bd3e34] Submitted process > CELLRANGER_MKREF (B)
+[d6/4f4f11] Submitted process > CELLRANGER_MKREF (A)
+[1f/d9f432] Submitted process > CELLRANGER_COUNT (B)
+[a3/3986dc] Submitted process > CELLRANGER_COUNT (A)
+[46/17a113] Submitted process > SALMON_QUANT (B)
+[3e/df8365] Submitted process > SALMON_QUANT (A)
+[4f/8e5fa7] Submitted process > BULK2CELL_QUANTIFY (B)
+[11/8c9047] Submitted process > BULK2CELL_QUANTIFY (A)
+PASS: 24 tasks; both HiFi and FLNC sample paths reached bulk2cell. Artifacts: /tmp/bulk2cell-smoke.d2QO2w

@@ -1,0 +1,16 @@
+{
+  "src/APAtoseurat.R": "2c9c5e044601a2182651d697c45194d3db1d99d380d206aab9ad1ee19059d861",
+  "src/IPA_finder.pl": "564bd40cb285a2ccc30d154293bcac708446cddd83bac2d87fddece8ab3100ce",
+  "src/analysis_samples.R": "d28f8366266924f4b24873d82dd2f43f3cd15fe7cf8adc992535a8c30d440b25",
+  "src/compute_prob.R": "3d8235727c104a220ff80cac1780abb54d66ac3f3cb1b9610ad240a374e4fc59",
+  "src/em_algorithm.R": "ddfa417dc8b26a8e8daaf6896e949d90d8ac00c7b0291fb8990f63558d060a99",
+  "src/fragment_probabilities.R": "e87dc9906b7fba4c1e8878c480579126b17ed4274561b1d27d126f11d7abce5f",
+  "src/gtf_processing.R": "04b6454a535db7780d355ed29e8e4f538cccaf5bf8bf7b887e290230649283bc",
+  "src/ip_filtering.R": "7a456feaab26b1b009bba2d2bcb8032f16b612ebf6aad9ca4278ed0e2dc7538c",
+  "src/mapping_filtering.R": "565341225a4a840ce5dfd62d5022ee26c845e289be379eabe512a15ebf6b1839",
+  "src/merge_DGE_PRED.R": "b885b0108211adc7bc07f274c57be4bc5e9c108f2d682e2f5b2880595466e541",
+  "src/merge_and_writecells.R": "e6d4d4815e7c22100b6bf369a6514e1f086826eef28c51c42721ce6d171ece30",
+  "src/quantification_processing.R": "51ba0070f81b18fd3434397a2ff107fe057932ed91813d60c7c110371d785085",
+  "src/read_10X.R": "43bda177a92a8d60fcf933ee5f6300ed20d611f8aabd4755d0796567d92d84d2",
+  "src/scalpel_library.R": "be1656330b24b5bcd8c0976b0e6e75b4502d651d21a4b02b3c5fbf55c96a7f21"
+}
