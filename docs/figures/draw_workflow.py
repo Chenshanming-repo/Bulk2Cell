@@ -16,14 +16,24 @@ def text(x, y, s, size=12, weight='normal', color=black, ha='center'):
     ax.text(x, y, s, fontsize=size, weight=weight, color=color,
             ha=ha, va='center', linespacing=1.45)
 
-def route(points, color, arrow=True, lw=5):
-    xs, ys = zip(*points)
-    ax.plot(xs, ys, color=color, lw=lw, solid_capstyle='round', zorder=1)
+def route(points, color, arrow=True, lw=5, direction_markers=(), tip_gap=10):
+    # Stop the shaft at the arrowhead and keep the tip clear of node markers.
     if arrow:
-        a, b = points[-2:]
-        dx, dy = b[0]-a[0], b[1]-a[1]
-        start = (b[0]-dx*.15, b[1]-dy*.15)
-        ax.add_patch(FancyArrowPatch(start, b, arrowstyle='-|>', mutation_scale=19,
+        if len(points) > 2:
+            xs, ys = zip(*points[:-1])
+            ax.plot(xs, ys, color=color, lw=lw, solid_capstyle='round', zorder=1)
+        ax.add_patch(FancyArrowPatch(points[-2], points[-1],
+                                    arrowstyle='-|>,head_length=0.5,head_width=0.32',
+                                    mutation_scale=30, shrinkA=0, shrinkB=tip_gap,
+                                    lw=lw, color=color, zorder=2))
+    else:
+        xs, ys = zip(*points)
+        ax.plot(xs, ys, color=color, lw=lw, solid_capstyle='round', zorder=1)
+    # Repeat direction cues between stages on the long horizontal routes.
+    for start, end in direction_markers:
+        ax.add_patch(FancyArrowPatch(start, end,
+                                    arrowstyle='-|>,head_length=0.5,head_width=0.32',
+                                    mutation_scale=30, shrinkA=0, shrinkB=0,
                                     lw=0, color=color, zorder=2))
 
 def node(x, y, label, below=True):
@@ -38,7 +48,9 @@ text(.5, 9.55, 'bulk2cell', 29, 'bold', ha='left')
 text(.5, 9.08, 'Bulk long-read-assisted isoform quantification at single-cell resolution', 14, ha='left')
 
 input_label(1.7, 8.3, 'PacBio bulk reads', 'HiFi + primers / FLNC BAMs')
-route([(3.1, 8.25), (14, 8.25)], black)
+route([(3.1, 8.25), (14, 8.25)], black, tip_gap=0, direction_markers=[
+    ((4.9, 8.25), (5.5, 8.25)), ((7.4, 8.25), (8.0, 8.25)),
+    ((10.2, 8.25), (10.8, 8.25))])
 node(4, 8.25, 'lima + refine\n(HiFi input)')
 node(6.5, 8.25, 'Iso-Seq cluster\n+ genome alignment')
 node(9, 8.25, 'Collapse\n+ Pigeon filter')
@@ -47,7 +59,8 @@ route([(14, 8.25), (14.8, 8.25), (14.8, 4.35), (12.5, 4.35)], black)
 text(15.12, 6.3, 'GTF\n+\nFASTA', 10, color=black)
 
 input_label(1.7, 6.35, 'Original reference', 'Genome FASTA + annotation GTF')
-route([(3.1, 6.3), (4.3, 6.3), (4.3, 5.65), (12.5, 5.65)], blue)
+route([(3.1, 6.3), (4.3, 6.3), (4.3, 5.65), (12.5, 5.65)], blue,
+      direction_markers=[((5.4, 5.65), (6.0, 5.65)), ((8.1, 5.65), (8.7, 5.65))])
 node(4.3, 6.3, 'Cell Ranger mkref', below=False)
 node(7.2, 5.65, 'Cell Ranger count')
 node(10, 5.65, 'Tagged BAM\n+ called barcodes', below=False)
@@ -65,7 +78,8 @@ text(10.65, 3.65, 'Cell / UMI\nevidence', 10, color=blue)
 route([(14.8, 4.35), (14.8, 3.15), (11.2, 3.15), (11.2, 2.8)], black)
 text(13.15, 3.38, 'Reference + Iso-Seq models', 10)
 
-route([(11.2, 2.8), (2.7, 2.8)], green)
+route([(11.2, 2.8), (2.7, 2.8)], green, tip_gap=0, direction_markers=[
+    ((8.6, 2.8), (8.0, 2.8)), ((5.5, 2.8), (4.9, 2.8))])
 node(11.2, 2.8, 'Molecule–isoform\ncompatibility')
 node(7.2, 2.8, 'Capture model\n+ group EM')
 node(3.2, 2.8, 'Cell × isoform / group\ncount matrices + QC')
