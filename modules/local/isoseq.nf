@@ -7,16 +7,18 @@ process ISOSEQ_REFINE {
     output:
     tuple val(sample), path('flnc.bam'), path('flnc.bam.pbi')
     script:
-    def inputs = bams.collect { "'${it}'" }.join(' ')
+    def bamFiles = bams instanceof List ? bams : [bams]
+    def primerFiles = primers instanceof List ? primers : [primers]
+    def inputs = bamFiles.collect { "'${it}'" }.join(' ')
     def refinement = stage == 'hifi' ? """
         mkdir lima
-        lima merged.bam '${primers[0]}' lima/fl.bam --isoseq --peek-guess -j ${task.cpus}
+        lima merged.bam '${primerFiles[0]}' lima/fl.bam --isoseq --peek-guess -j ${task.cpus}
         parts=(lima/*.bam)
         if [ "\${#parts[@]}" -ne 1 ]; then
             echo 'Expected one demultiplexed primer pair; split multiplexed biological samples first' >&2
             exit 1
         fi
-        isoseq refine "\${parts[0]}" '${primers[0]}' flnc.bam --require-polya -j ${task.cpus}
+        isoseq refine "\${parts[0]}" '${primerFiles[0]}' flnc.bam --require-polya -j ${task.cpus}
     """ : 'mv merged.bam flnc.bam'
     """
     pbmerge -o merged.bam ${inputs}
