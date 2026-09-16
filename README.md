@@ -8,7 +8,7 @@ Bulk PacBio Iso-Seq assisted **10x 3′ gene-expression isoform quantification**
 
 ## Required inputs
 
-Your input categories are sufficient to structure the workflow. To run it, provide:
+To run the workflow, provide:
 
 | Input | Requirement |
 |---|---|
@@ -50,19 +50,32 @@ flowchart TD
 
 Each pair has its own Iso-Seq catalog and union reference; samples are joined by ID. Bulk2cell's own annotation adapter performs exact-structure deduplication, so Salmon and final quantification share transcript IDs. Cell Ranger builds its reference from the original input genome FASTA and annotation GTF and processes the Illumina FASTQs independently of Iso-Seq. Its gene assignments and names follow the input annotation. Salmon and bulk2cell still use the Iso-Seq union. Novel genes absent from the input annotation will not receive Cell Ranger GX assignments and are excluded from downstream molecule quantification.
 
-## Conda setup
+## First-time environment setup
+
+Use Linux with Conda installed (for example, [Miniforge](https://github.com/conda-forge/miniforge)). Download or clone this repository, open a shell where `conda` is available, and enter the repository directory. Run all commands below from that directory.
+
+Create and activate the runner environment once:
 
 ```bash
-cd /homeb/user/repos/bulk2cell
+cd /path/to/bulk2cell
 conda env create -p "$PWD/.conda/runner" -f envs/runner.yml
 conda activate "$PWD/.conda/runner"
+nextflow -version
 ```
 
-All four environments have already been created on this host; activate the runner directly and use `-profile conda,installed`. The existing Cell Ranger executable is `/homeb/user/cellranger-10.1.0/cellranger`. On a new machine, run the create command once. Nextflow's `conda` profile creates and caches task environments from `envs/python.yml`, `envs/isoseq.yml`, and `envs/salmon.yml` on first use. Network access to conda-forge/bioconda is required during installation.
+The runner includes Nextflow and Java; no separate installation is needed. If `conda activate` is unavailable in Bash, run `conda init bash`, reopen your terminal, and activate the environment again. In later sessions, enter the repository directory and run only the activation command.
 
-Cell Ranger is distributed separately by 10x Genomics and is **not installed through Conda**. Install its official distribution and set the executable path in your parameters file. It remains an internal workflow stage.
+Install **Cell Ranger 9+** separately from [10x Genomics](https://www.10xgenomics.com/support/software/cell-ranger/downloads). It is **not installed through Conda**. Record the absolute path to its `cellranger` executable for the parameters file, and check the installation:
 
-To pre-create all task environments manually:
+```bash
+/path/to/cellranger/cellranger --version
+```
+
+With `-profile conda`, Nextflow creates task environments from `envs/python.yml`, `envs/isoseq.yml`, and `envs/salmon.yml` on first use and caches them under `.conda/tasks`. Allow extra time for the first run and network access to conda-forge/bioconda during installation. The Python engine is staged with tasks and imported via `PYTHONPATH`; a separate pip install is unnecessary.
+
+### Optional: create task environments in advance
+
+To install all task environments before running the workflow:
 
 ```bash
 for tool in python isoseq salmon; do
@@ -70,38 +83,45 @@ for tool in python isoseq salmon; do
 done
 ```
 
-Use `-profile conda,installed` to use these pre-created environments. Exact Linux package locks are saved under `envs/locks/`; recreate a prefix with `conda create -p PREFIX --file envs/locks/TOOL-linux-64.txt`. Use just `-profile conda` for Nextflow-managed environment creation. The Python engine is staged with tasks and imported via `PYTHONPATH`; a separate pip install is unnecessary.
+After creating all three, replace `-profile conda` with `-profile conda,installed` in the run commands below. Exact Linux package locks are also available under `envs/locks/`; recreate a prefix with `conda create -p PREFIX --file envs/locks/TOOL-linux-64.txt`, replacing `PREFIX` and `TOOL` as appropriate.
 
-## Configure and run
+## Configure and run for the first time
 
-Copy `examples/samples.csv` and `examples/params.yaml` and replace the example paths. Paths inside the CSV are relative to **the CSV's directory**, or absolute. Parameters-file paths should be absolute. Keep sample IDs to letters, digits, underscores and hyphens.
+Copy the example configuration files:
 
 ```bash
-nextflow run main.nf -profile conda \
-    -params-file /path/to/params.yaml \
-    -work-dir /scratch/bulk2cell-work
+mkdir -p config
+cp examples/samples.csv config/samples.csv
+cp examples/params.yaml config/params.yaml
 ```
 
-Resume the same run after interruption:
+Edit both copies before running; the examples contain placeholder paths, not runnable demonstration data.
+
+1. In `config/samples.csv`, add one row per matched bulk/10x pair using the columns in the example. Set `pacbio_stage` to `hifi` or `flnc`; supply the primer FASTA for `hifi` and leave `primers` empty for `flnc`. Set the FASTQ sample prefix and chemistry for each library. Keep sample IDs to letters, digits, underscores and hyphens. Paths inside the CSV are relative to **the CSV's directory**, or absolute.
+2. In `config/params.yaml`, set `input` to the absolute path of your copied CSV, `genome` to your FASTA, `annotation` to your GTF, `outdir` to the desired results directory, and `cellranger` to the installed executable. Use absolute paths for these entries. The remaining settings can keep their example defaults for the first run.
+3. Choose a work directory with enough space for intermediate references, BAMs and indexes. Replace `/path/to/bulk2cell-work` below with that directory.
+
+With the runner environment active, start the workflow:
 
 ```bash
 nextflow run main.nf -profile conda \
-    -params-file /path/to/params.yaml \
-    -work-dir /scratch/bulk2cell-work -resume
+    -params-file "$PWD/config/params.yaml" \
+    -work-dir /path/to/bulk2cell-work
+```
+
+The default executor runs locally. Defaults reach 192 GB for clustering/alignment and 64 GB for Cell Ranger/quantification; review the resource requirements before starting. `conf/resources.config` provides example resource overrides; adapt a copy to your available resources and load it with `-c /path/to/resources.config`. Work storage can substantially exceed input size because references, BAMs and indexes are created per sample.
+
+Resume the same run after interruption using the same configuration and work directory:
+
+```bash
+nextflow run main.nf -profile conda \
+    -params-file "$PWD/config/params.yaml" \
+    -work-dir /path/to/bulk2cell-work -resume
 ```
 
 Keep the Nextflow launch directory, `.nextflow` cache and work directory for resume. Use a fresh results directory for a different sample set/configuration to avoid mixing published results. The input validator reruns on resume; completed scientific tasks use Nextflow's cache. Input FASTQ directories must remain immutable while running/resuming.
 
-For Slurm, use `-profile conda,slurm` and provide your queue/account through a local config. All paths and Conda environments must be visible to compute nodes. `conf/resources.config` shows process-level resource overrides. Defaults reach 192 GB for clustering/alignment and 64 GB for Cell Ranger/quantification; tune against your dataset and cluster. Work storage can substantially exceed input size because references, BAMs and indexes are created per sample.
-
-For this host, after filling in the input paths, use:
-
-```bash
-nextflow run main.nf -profile conda,installed -c conf/this-host.config \
-    -params-file /path/to/params.yaml -resume
-```
-
-Set `cellranger` in the parameters file to `/homeb/user/cellranger-10.1.0/cellranger`, or remove that key so the host config applies.
+For Slurm, use `-profile conda,slurm` (or `-profile conda,installed,slurm` with pre-created environments) and provide your queue/account through a config loaded with `-c`. All input paths, work storage, the Cell Ranger installation and Conda environments must be visible to compute nodes.
 
 ## Outputs
 
@@ -132,6 +152,8 @@ The final `run.json` is the engine completion record. Read `software/bulk2cell/d
 - Structural union construction and final quantification use the same reference/Pigeon import code. Eligibility/exclusions and alias mapping are recorded; this is a research workflow, without an end-to-end biological validation claim.
 
 ## Tests
+
+For the checks below, first create the optional task environments described above. Run these commands from the repository directory.
 
 ```bash
 conda activate "$PWD/.conda/python"
