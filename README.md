@@ -98,6 +98,8 @@ cp examples/params.yaml config/params.yaml
 Edit both copies before running; the examples contain placeholder paths, not runnable demonstration data.
 
 1. In `config/samples.csv`, add one row per matched bulk/10x pair using the columns in the example. Set `pacbio_stage` to `hifi` or `flnc`; supply the primer FASTA for `hifi` and leave `primers` empty for `flnc`. Set the FASTQ sample prefix and chemistry for each library. Keep sample IDs to letters, digits, underscores and hyphens. Paths inside the CSV are relative to **the CSV's directory**, or absolute.
+   For multiple sequencing runs of the same 10x library, use one row with semicolon-separated exact prefixes in `fastq_sample`, for example `HBA8_3-1;HBA8_3-2;HBA8_3-3`. Set `fastq_dir` to the directory containing all pairs. The workflow checks paired FASTQs for every prefix and passes them together to Cell Ranger. Independently prepared 10x libraries need separate rows, even when they come from the same biological sample.
+
 2. In `config/params.yaml`, set `input` to the absolute path of your copied CSV, `genome` to your FASTA, `annotation` to your GTF, `outdir` to the desired results directory, and `cellranger` to the installed executable. Use absolute paths for these entries. The remaining settings can keep their example defaults for the first run.
 3. Choose a work directory with enough space for intermediate references, BAMs and indexes. Replace `/path/to/bulk2cell-work` below with that directory.
 

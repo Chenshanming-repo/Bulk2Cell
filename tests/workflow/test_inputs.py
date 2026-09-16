@@ -54,3 +54,31 @@ def test_rejects_unpaired_lanes(sheet):
 def test_rejects_duplicate_samples(sheet):
     path=sheet(); lines=path.read_text().splitlines(); path.write_text('\n'.join(lines+[lines[1]])+'\n')
     with pytest.raises(ValueError,match='duplicate'):load().validate_samples(path)
+
+
+def test_multiple_fastq_prefixes_for_one_library(sheet):
+    path = sheet(fastq_sample='HBA8_3-1;HBA8_3-2;HBA8_3-3')
+    for prefix, lane in [('HBA8_3-1', '001'), ('HBA8_3-2', '003'), ('HBA8_3-3', '003')]:
+        for read in (1, 2):
+            (path.parent / 'fastqs' / f'{prefix}_S1_L{lane}_R{read}_001.fastq.gz').touch()
+    rows = load().validate_samples(path)
+    assert len(rows) == 1
+    assert rows[0]['fastq_sample'] == 'HBA8_3-1,HBA8_3-2,HBA8_3-3'
+
+
+@pytest.mark.parametrize('prefixes,match', [
+    ('library;missing', 'no matching.*missing'),
+    ('library;library', 'duplicate'),
+    ('library;', 'invalid fastq_sample'),
+    ('library;bad$(id)', 'invalid fastq_sample'),
+])
+def test_rejects_invalid_fastq_prefix_lists(sheet, prefixes, match):
+    with pytest.raises(ValueError, match=match):
+        load().validate_samples(sheet(fastq_sample=prefixes))
+
+
+def test_requires_pairs_for_each_fastq_prefix(sheet):
+    path = sheet(fastq_sample='library;second')
+    (path.parent / 'fastqs/second_S1_L001_R1_001.fastq.gz').touch()
+    with pytest.raises(ValueError, match='paired'):
+        load().validate_samples(path)

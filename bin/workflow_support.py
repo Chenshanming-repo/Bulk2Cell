@@ -27,8 +27,12 @@ def validate_samples(samplesheet):
                 raise ValueError(f'{sample}: stage must be hifi or flnc; convert subreads to HiFi first')
             if row['chemistry'] not in {'SC3Pv2','SC3Pv3','SC3Pv4'}:
                 raise ValueError(f'{sample}: chemistry must be SC3Pv2, SC3Pv3 or SC3Pv4 (3-prime GEX)')
-            if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_-]*', row['fastq_sample']):
+            prefixes = [prefix.strip() for prefix in row['fastq_sample'].split(';')]
+            if any(not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_-]*', prefix) for prefix in prefixes):
                 raise ValueError(f'{sample}: invalid fastq_sample')
+            if len(set(prefixes)) != len(prefixes):
+                raise ValueError(f'{sample}: duplicate fastq_sample prefix')
+            row['fastq_sample'] = ','.join(prefixes)
             def resolve(value, directory=False):
                 path = Path(value).expanduser()
                 if not path.is_absolute(): path = sheet.parent/path
@@ -52,13 +56,14 @@ def validate_samples(samplesheet):
                 if len(headers)!=2 or not any(h.endswith('5p') for h in headers) or not any(h.endswith('3p') for h in headers):
                     raise ValueError(f'{sample}: primers must contain one header ending 5p and one ending 3p')
             row['fastq_dir'] = resolve(row['fastq_dir'], directory=True)
-            pattern = re.compile(re.escape(row['fastq_sample'])+r'_S\d+(?:_L\d{3})?_R([12])_\d{3}\.fastq\.gz$')
-            reads = {1:set(),2:set()}
-            for path in Path(row['fastq_dir']).glob('*.fastq.gz'):
-                match = pattern.fullmatch(path.name)
-                if match: reads[int(match[1])].add(re.sub(r'_R[12]_', '_RX_', path.name))
-            if not reads[1] and not reads[2]: raise ValueError(f'{sample}: no matching 10x FASTQ files')
-            if not reads[1] or reads[1]!=reads[2]: raise ValueError(f'{sample}: FASTQ R1/R2 lanes must be paired')
+            for prefix in prefixes:
+                pattern = re.compile(re.escape(prefix)+r'_S\d+(?:_L\d{3})?_R([12])_\d{3}\.fastq\.gz$')
+                reads = {1:set(),2:set()}
+                for path in Path(row['fastq_dir']).glob('*.fastq.gz'):
+                    match = pattern.fullmatch(path.name)
+                    if match: reads[int(match[1])].add(re.sub(r'_R[12]_', '_RX_', path.name))
+                if not reads[1] and not reads[2]: raise ValueError(f'{sample}: no matching 10x FASTQ files for {prefix}')
+                if not reads[1] or reads[1]!=reads[2]: raise ValueError(f'{sample}: FASTQ R1/R2 lanes must be paired for {prefix}')
             rows.append(row)
     if not rows: raise ValueError('samplesheet is empty')
     return rows
