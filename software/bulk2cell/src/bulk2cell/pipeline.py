@@ -81,7 +81,7 @@ def run_quantification(args):
     # avoids retaining all training values while preserving deterministic input.
     rng=np.random.default_rng(args.seed); training=[]; seen=0
     for gid,ts in models.items():
-        if len(by_gene[gid])*len(ts)>args.max_likelihood_entries:
+        if args.max_likelihood_entries > 0 and len(by_gene[gid])*len(ts)>args.max_likelihood_entries:
             raise ValueError(f'{gid}: likelihood budget exceeded; run smaller gene batches or increase --max-likelihood-entries')
         for m in by_gene[gid]:
             hits=[t for t in ts if compatible(m,t)]

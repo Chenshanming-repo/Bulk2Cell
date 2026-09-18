@@ -21,7 +21,7 @@ To run the workflow, provide:
 | Corresponding annotation | Uncompressed exon GTF, including `gene_id` and `transcript_id`, using exactly the same genome build and contig names. Convert GFF3 to GTF before running. |
 | Cell Ranger installation | An installed **Cell Ranger 9+** executable, accessible on every execution node. Set `cellranger` to its absolute path. |
 
-Raw subreads require CCS/HiFi generation first. Aligned PacBio BAMs, full-length reads that still need refinement, multiplexed bulk samples, 10x 5′/Flex/ATAC/VDJ and multi-library aggregation are outside this initial interface. Split/demultiplex biological samples upstream. Existing Cell Ranger references and `quant.sf` are **not required**; the workflow builds them.
+Raw subreads require CCS/HiFi generation first. Aligned PacBio BAMs, full-length reads that still need refinement, multiplexed bulk samples, 10x 5′/Flex/ATAC/VDJ and multi-library aggregation are outside this initial interface. Split/demultiplex biological samples upstream. Existing Cell Ranger references and `quant.sf` are **not required**; the workflow generates `quant.sf` and builds a Cell Ranger reference unless one is supplied.
 
 ## Workflow
 
@@ -36,8 +36,9 @@ flowchart TD
     G[Genome FASTA + annotation GTF] --> P
     P --> U[bulk2cell exact union GTF + transcript FASTA]
     G --> U
-    G --> CR[Cell Ranger mkref]
+    G --> CR[Cell Ranger mkref when no existing reference is supplied]
     CR --> CC[Cell Ranger count]
+    ER[Optional existing Cell Ranger reference] --> CC
     F[10x GEX FASTQs] --> CC
     U --> SI[Salmon transcriptome + genome decoy index]
     CC --> SR[Called-cell RNA pseudobulk]
@@ -48,7 +49,7 @@ flowchart TD
     CC --> Q
 ```
 
-Each pair has its own Iso-Seq catalog and union reference; samples are joined by ID. Bulk2cell's own annotation adapter performs exact-structure deduplication, so Salmon and final quantification share transcript IDs. Cell Ranger builds its reference from the original input genome FASTA and annotation GTF and processes the Illumina FASTQs independently of Iso-Seq. Its gene assignments and names follow the input annotation. Salmon and bulk2cell still use the Iso-Seq union. Novel genes absent from the input annotation will not receive Cell Ranger GX assignments and are excluded from downstream molecule quantification.
+Each pair has its own Iso-Seq catalog and union reference; samples are joined by ID. Bulk2cell's own annotation adapter performs exact-structure deduplication, so Salmon and final quantification share transcript IDs. Cell Ranger uses `cellranger_reference` when supplied; otherwise it builds its reference from the original input genome FASTA and annotation GTF. It processes the Illumina FASTQs independently of Iso-Seq. Its gene assignments and names follow the annotation in its reference. Salmon and bulk2cell still use the Iso-Seq union. Novel genes absent from the input annotation will not receive Cell Ranger GX assignments and are excluded from downstream molecule quantification.
 
 ## First-time environment setup
 
@@ -111,6 +112,10 @@ nextflow run main.nf -profile conda \
     -work-dir /path/to/bulk2cell-work
 ```
 
+To reuse a Cell Ranger transcriptome reference, set `cellranger_reference: /path/to/refdata-gex-reference` in your parameters file, or add `--cellranger_reference /path/to/refdata-gex-reference` to the command. Supply the reference root containing `reference.json`, `fasta/genome.fa`, `genes/genes.gtf` (or `genes.gtf.gz`), and `star/`. The workflow checks this structure and shares the reference across all samples, skipping every `cellranger mkref` task. Omit the option or leave it `null` to build references as before. The Cell Ranger executable is still required for `count`.
+
+`genome` and `annotation` remain required for Iso-Seq, Salmon and bulk2cell. Use the same genome assembly, contig names and compatible gene IDs as the supplied Cell Ranger reference; the structure check does not establish biological compatibility or validate the index contents. Existing references are staged for use and are not copied into the results' `cellranger_reference/` directories.
+
 The default executor runs locally. Defaults reach 192 GB for clustering/alignment and 64 GB for Cell Ranger/quantification; review the resource requirements before starting. `conf/resources.config` provides example resource overrides; adapt a copy to your available resources and load it with `-c /path/to/resources.config`. Work storage can substantially exceed input size because references, BAMs and indexes are created per sample.
 
 Resume the same run after interruption using the same configuration and work directory:
@@ -135,7 +140,7 @@ results/
     ├── isoseq/collapse/            # collapsed structures, FLNC counts, read assignments
     ├── isoseq/pigeon/              # filtered structures and classifications
     ├── reference/                 # exact union GTF/FASTA and alias/QC JSON
-    ├── cellranger_reference/       # sample-specific genome reference
+    ├── cellranger_reference/       # sample-specific reference, only when mkref runs
     ├── cellranger/                 # tagged/indexed BAM, barcodes, gene matrix and web summary
     ├── salmon/                    # quant.sf, mapping metadata, read-selection QC
     └── bulk2cell/quantification/   # all-gene results and completion manifest
@@ -166,4 +171,4 @@ conda activate "$PWD/.conda/runner"
 bash tests/workflow/smoke.sh
 ```
 
-The smoke test creates two artificial sample manifests and uses `-stub-run`; it checks both HiFi and FLNC routes, sample joins, 24 task completions and final output locations. Its empty BAM/FASTQ fixtures are **not biological test data**. Stub outputs explicitly say `status: stub` and must never be used as results. See `docs/VALIDATION.md` for this delivery's checks.
+The smoke test creates two artificial sample manifests and uses `-stub-run`; it checks both HiFi and FLNC routes, sample joins and final output locations. It checks 24 task completions with reference building, 22 with an existing reference, staging of the shared reference for both samples, and rejection of invalid reference paths. Its empty BAM/FASTQ fixtures are **not biological test data**. Stub outputs explicitly say `status: stub` and must never be used as results. See `docs/VALIDATION.md` for this delivery's checks.

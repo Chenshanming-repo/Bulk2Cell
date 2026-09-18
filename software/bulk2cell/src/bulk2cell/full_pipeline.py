@@ -46,7 +46,7 @@ def _evidence(gid):
     ctx = _CONTEXT
     molecules, qc = adapters.extract_molecules(ctx['args'].bam, ctx['models'][gid], {gid}, ctx['barcode_set'],
         gene_normalization=ctx['normalization'], bam_handle=_BAM)
-    if len(molecules) * len(ctx['models'][gid]) > ctx['args'].max_likelihood_entries:
+    if ctx['args'].max_likelihood_entries > 0 and len(molecules) * len(ctx['models'][gid]) > ctx['args'].max_likelihood_entries:
         raise ValueError(f'{gid}: likelihood budget exceeded ({len(molecules)} molecules, {len(ctx["models"][gid])} models)')
     return molecules, qc
 
@@ -327,8 +327,8 @@ def _run_full_quantification(args):
     """Run or safely resume all three methods using one shared global reservoir."""
     global _CONTEXT
     started = time.monotonic()
-    if not 1 <= args.workers <= 8:
-        raise ValueError('--workers must be between 1 and 8')
+    if args.workers < 1:
+        raise ValueError('--workers must be positive')
     if args.train_only and (args.salmon or args.tes or args.training_cache):
         raise ValueError('--train-only requires evidence inputs only, without Salmon, TES, or another training cache')
     identity = _training_identity(args) if args.train_only else _identity(args)

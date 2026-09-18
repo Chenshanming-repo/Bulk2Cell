@@ -3,6 +3,8 @@ genome: /path/to/genome.fa
 annotation: /path/to/genes.gtf
 outdir: /path/to/results
 cellranger: /path/to/cellranger-9.0.1/cellranger
+# Optional existing Cell Ranger transcriptome reference directory; skips mkref.
+cellranger_reference: null
 salmon_libtype: A
 frag_mean: 200
 frag_sd: 80

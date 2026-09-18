@@ -14,7 +14,7 @@ process BULK2CELL_QUANTIFY {
     export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1
     python -m bulk2cell quantify-full --reference '${annotation}' --isoseq-gff '${gff}' \
       --classification '${classification}' --bam '${bam}' --barcodes '${barcodes}' \
-      --salmon '${salmon}' --tau ${params.tau} --workers ${Math.min(task.cpus,8)} \
+      --salmon '${salmon}' --tau ${params.tau} --workers ${task.cpus} \
       --max-likelihood-entries ${params.max_likelihood_entries} --out quantification
     """
     stub:

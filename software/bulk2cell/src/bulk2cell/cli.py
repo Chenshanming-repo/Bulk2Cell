@@ -27,10 +27,10 @@ def parser():
     q.add_argument('--bandwidth',type=float,default=30,help='Gaussian distance bandwidth in nt')
     q.add_argument('--em-strength',type=float,default=1,help='Hybrid prior pseudocount strength in cell/group EM')
     q.add_argument('--max-iter',type=int,default=500,help='Maximum EM iterations per cell/gene')
-    q.add_argument('--max-likelihood-entries',type=int,default=10000000,help='Per-gene dense likelihood allocation guard')
+    q.add_argument('--max-likelihood-entries',type=int,default=10000000,help='Per-gene dense likelihood allocation guard; 0 disables the limit')
     q.add_argument('--seed',type=int,default=0,help='Distance reservoir sampling seed')
     f=commands.add_parser('quantify-full',parents=[q],add_help=False,help='Bounded resumable all-gene quantification and ablations')
-    f.add_argument('--workers',type=int,default=4,help='Concurrent genes, at most 8')
+    f.add_argument('--workers',type=int,default=4,help='Concurrent genes (positive worker count)')
     f.add_argument('--train-only',action='store_true',help='Publish a global training cache before priors/TES are available')
     f.add_argument('--training-cache',help='Verified training.json from an identical evidence training run')
     f.add_argument('--resume',action='store_true',help='Resume only with identical input fingerprints and parameters')
@@ -74,7 +74,7 @@ def main(argv=None):
         from .pipeline import run_quantification
         if bool(args.isoseq_gff) != bool(args.classification): raise ValueError('--isoseq-gff and --classification must be supplied together')
         if args.catalog and args.isoseq_gff: raise ValueError('--catalog cannot be combined with raw IsoSeq inputs')
-        if args.max_likelihood_entries<1: raise ValueError('--max-likelihood-entries must be positive')
+        if args.max_likelihood_entries<0: raise ValueError('--max-likelihood-entries must be nonnegative (0 disables the limit)')
         if args.command == 'quantify-full':
             from .full_pipeline import run_full_quantification
             result=run_full_quantification(args)

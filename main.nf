@@ -8,7 +8,7 @@ include { BULK2CELL_QUANTIFY } from './modules/local/bulk2cell'
 
 workflow {
     if (params.help) {
-        log.info 'bulk2cell: nextflow run main.nf -profile conda -params-file examples/params.yaml\nRequired: --input samples.csv --genome genome.fa --annotation genes.gtf\nSee README.md for PacBio stages, primers, 10x 3-prime chemistry and Cell Ranger setup.'
+        log.info 'bulk2cell: nextflow run main.nf -profile conda -params-file examples/params.yaml\nRequired: --input samples.csv --genome genome.fa --annotation genes.gtf\nOptional: --cellranger_reference /path/to/reference skips Cell Ranger mkref\nSee README.md for PacBio stages, primers, 10x 3-prime chemistry and Cell Ranger setup.'
     } else {
         ['input','genome','annotation'].each { key ->
             if (!params[key]) error "Missing required parameter --${key}; see README.md"
@@ -20,6 +20,18 @@ workflow {
         def checkedFile = { value ->
             if (value.toString().find(/['"`$\n\r]/)) error 'Input paths must not contain quotes or shell syntax'
             file(value, checkIfExists: true)
+        }
+        def cellrangerReference = null
+        if (params.cellranger_reference) {
+            cellrangerReference = checkedFile(params.cellranger_reference)
+            if (!cellrangerReference.isDirectory() ||
+                !cellrangerReference.resolve('reference.json').isFile() ||
+                !cellrangerReference.resolve('fasta/genome.fa').isFile() ||
+                !cellrangerReference.resolve('star').isDirectory() ||
+                !(cellrangerReference.resolve('genes/genes.gtf').isFile() ||
+                  cellrangerReference.resolve('genes/genes.gtf.gz').isFile())) {
+                error '--cellranger_reference must be a Cell Ranger reference directory containing reference.json, fasta/genome.fa, genes/genes.gtf (or genes.gtf.gz), and star/'
+            }
         }
         def source = Channel.value(file("${projectDir}/software/bulk2cell/src"))
         VALIDATE_SAMPLES(Channel.value(checkedFile(params.input)))
@@ -36,9 +48,15 @@ workflow {
         ISOSEQ_COLLAPSE(ISOSEQ_ALIGN.out.join(ISOSEQ_REFINE.out))
         PIGEON_FILTER(ISOSEQ_COLLAPSE.out[0], reference)
         BUILD_UNION(PIGEON_FILTER.out, reference, source)
-        // Cell Ranger uses the supplied genome/annotation independently of Iso-Seq.
-        CELLRANGER_MKREF(shortreads.map { sample, fastqs, prefix, chemistry -> sample }, reference)
-        CELLRANGER_COUNT(shortreads.join(CELLRANGER_MKREF.out))
+        // Reuse a shared Cell Ranger reference or build from the original genome/annotation.
+        if (cellrangerReference) {
+            CELLRANGER_COUNT(shortreads.map { sample, fastqs, prefix, chemistry ->
+                tuple(sample, fastqs, prefix, chemistry, cellrangerReference)
+            })
+        } else {
+            CELLRANGER_MKREF(shortreads.map { sample, fastqs, prefix, chemistry -> sample }, reference)
+            CELLRANGER_COUNT(shortreads.join(CELLRANGER_MKREF.out))
+        }
         SALMON_INDEX(BUILD_UNION.out.union, reference)
         SALMON_QUANT(SALMON_INDEX.out.join(CELLRANGER_COUNT.out[0]), source)
         BULK2CELL_QUANTIFY(PIGEON_FILTER.out.join(CELLRANGER_COUNT.out[0]).join(SALMON_QUANT.out[0]), reference, source)
